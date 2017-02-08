@@ -1,0 +1,65 @@
+body, html {
+   
+ /* old browsers */
+    background: -moz-linear-gradient(top, #efefef 10%, #949494 90% ); /* firefox */
+
+    } /* corresponds to height of #footer */
+.nopadding-right {
+  
+    
+    padding-right: 0 !important;
+}
+.nopadding-left{
+    padding-left: 0 !important;
+}
+
+
+/**
+ * Profile image component
+ */
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    padding-top: 10px;
+}
+
+.profile-header-img > img.img-circle {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #FF4136;
+}
+
+.profile-header {
+    margin-top: 20px;
+}
+
+/**
+ * Ranking component
+ */
+.rank-label-container {
+    margin-top: -19px;
+    /* z-index: 1000; */
+    text-align: center;
+}
+
+.label.label-default.rank-label {
+    background-color: #e52d27;
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
+}
+.profile-header-name{
+
+    padding-top: 25px;
+}
+
+.postagem {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 15px;
+  background-color: #FFFFFF ;
+  border: 1px solid #AAAAAA ;
+  border-radius: 5px;
+  
