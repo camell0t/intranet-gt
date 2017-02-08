@@ -149,7 +149,7 @@
                                             <input class="form-check-input" type="radio" name="resposta" value="{{$enquete->opcao5}}"> {{$enquete->opcao5}}
                                         </label>
                                     </div>
-                                </form>
+                                
                             </div>                                           
                         </ul>
                     </div>
@@ -158,6 +158,7 @@
                             <input type="submit" value="Votar" class="btn btn-danger btn-block">
                         </div>
                     </div>
+                    </form>
                 </div>                                
             </div>
         @endforeach
@@ -172,12 +173,12 @@
                     <div class="col-md-12">                            
                          <form action="{{ route('formulario.salvar', $sugestao->id) }}" method="post"> 
                             {{ csrf_field() }}
-                            <div class="form-group {{ $errors->has('sugestao') ? ' has-error' : '' }}">
+                            <div class="form-group {{ $errors->has('mensagem') ? ' has-error' : '' }}">
                                 <p>{{ $sugestao->corpo }}</p>
                                 <textarea name="mensagem" cols="30" rows="3" class="form-control" placeholder="Sugestão"></textarea>
-                                @if ($errors->has('sugestao'))
+                                @if ($errors->has('mensagem'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('sugestao') }}</strong>
+                                        <strong>{{ $errors->first('mensagem') }}</strong>
                                     </span>
                                 @endif                                
                             </div>                            

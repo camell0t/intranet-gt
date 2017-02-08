@@ -108,7 +108,7 @@ class HomeController extends Controller
             return redirect()->route('home.index');
         }
     }
-    public function salvarformulario(Request $request, $id){
+    public function salvarformulario(\App\Http\Requests\FormularioRequest $request, $id){
         $userid = Auth::user()->id;
         $formid= $id;
 

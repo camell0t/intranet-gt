@@ -66,6 +66,11 @@ Route::get('painel/postagens/principal/deletar/{id}', ['uses'=>'PostController@d
 Route::put('painel/postagens/principal/atualizar/{id}', ['uses'=>'PostController@atualizarprincipal', 'as'=>'postagemprincipal.atualizar']);
 
 
+//FORMULARIOS E ENQUETES
+Route::get('painel/forms/', ['uses'=>'FormController@index', 'as'=>'form.index']);
+Route::get('painel/forms/detalhes/{id}', ['uses'=>'FormController@detalhes', 'as'=>'form.detalhes']);
+
+
 
 
 

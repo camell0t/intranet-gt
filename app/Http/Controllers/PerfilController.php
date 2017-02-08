@@ -57,7 +57,7 @@ class PerfilController extends Controller
 	}
 
 	public function atualizarsenha(\App\Http\Requests\UsuarioAtualizarSenhaRequest $request,$id){
-    	if (Auth::user()->can('Administrador') == true ){
+    	
             $user = \App\User::find($id);
             if (Hash::check($request->get('senhaatual'), $user->password)) { // CHECA O HASH DA SENHA ATUAL COM A SENHA RECEBIDA
 				$user->password = bcrypt($request->password);
@@ -78,9 +78,7 @@ class PerfilController extends Controller
         		return redirect()->route('perfil.editarsenha');
 	        }
 
-        }else{
-            return redirect()->route('perfil.index');
-        }
+      
 	
     }
 
