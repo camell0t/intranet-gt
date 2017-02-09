@@ -11,12 +11,13 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div class="box box-primary">
 			<div class="box-body box-profile">
-				<h4>Formulário: {{ $formulario->titulo}}</h4>
+				<h4>{{ $enquete->pergunta}}</h4>
+				<b>{{$enquete->opcao1}}</b>
 			 	<ul class="list-group list-group-unbordered">
 			 		@foreach($envios as $envio)
 			 		<li class="list-group-item">
 			 			<p><b>Nome: </b>{{ $envio->user->name }} {{ $envio->user->sobrenome }}</p> <!--CHAMA FUNCAO user NA MODEL ENVIOS_FORMULARIO -->
-			      		<b>Mensagem: </b><p>{{ $envio->mensagem }}</p>			      		
+			      		<p><b>Opção: </b>{{ $envio->resposta }}</p>			      		
 			    	</li>
 			    	
 			    	@endforeach

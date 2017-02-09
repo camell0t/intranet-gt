@@ -13,11 +13,11 @@ class Envios_formulario extends Model
     	return $this->belongsTo('App\Formularios');
     }
     public function username(){
-    	return $this->belongsTo('App\User');
+    	return $this->hasMany('App\User');
     }
 
-    public function user($id){
-    	$user = new \App\User();
-    	return $user->where('id', '=', $id);
+    public function user(){
+    	return $this->belongsTo(\App\User::class); // RECUPERA USUARIO protocolo oi 2017101602104
+    	
     }
 }

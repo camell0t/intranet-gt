@@ -17,7 +17,12 @@
 			      		<b>Descrição: {{ $form->corpo }}</b>			      		
 			    	</li>
 			    	<li class="list-group-item">
-			      		<b>Situação: {{ $form->situacao }}</b><small class="pull-right">1 = ativo, 0 = inativo</small>			      		
+			    		<?php if($form->situacao == 1){
+			    			$situacao = 'Ativo';
+			    			}else{
+			    				$situacao = 'Inativo';
+			    				}?>
+			      		<b>Situação: {{ $situacao }}</b>			      		
 			    	</li>			    	
 		  		</ul>
 		  		<a class="btn btn-primary btn-block" href="{{ route('form.detalhes', $form->id) }}">Detalhes</a>

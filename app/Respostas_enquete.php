@@ -11,4 +11,8 @@ class Respostas_enquete extends Model
    	public function enquete(){
     	return $this->belongsTo('App\Enquetes');
     }
+    public function user(){
+    	return $this->belongsTo(\App\User::class); // RECUPERA USUARIO protocolo oi 20171016021047
+    	
+    }
 }

@@ -114,7 +114,7 @@ $(document).ready(function() {
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{route('home.index')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>G</b>T</span>
       <!-- logo for regular state and mobile devices -->
@@ -460,8 +460,7 @@ $(document).ready(function() {
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('form.index') }}"><i class="fa fa-circle-o"></i> Formulários</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="{{ route('enquete.index') }}"><i class="fa fa-circle-o"></i> Enquetes</a></li>
           </ul>
         </li>
         @endif
@@ -589,10 +588,9 @@ $(document).ready(function() {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0.0
+      <b>Versão</b> 1.0.0
     </div>
-    <strong>Copyright &copy; Grupo G Trigueiro 2017</strong> All rights
-    reserved.
+    <strong>Copyright &copy; Grupo G Trigueiro 2017</strong> Todos os direitos reservados.
   </footer>
 
   <!-- Control Sidebar -->
