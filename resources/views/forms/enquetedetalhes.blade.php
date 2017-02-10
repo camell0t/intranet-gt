@@ -12,7 +12,7 @@
 		<div class="box box-primary">
 			<div class="box-body box-profile">
 				<h4>{{ $enquete->pergunta}}</h4>
-				<b>{{$enquete->opcao1}}</b>
+				
 			 	<ul class="list-group list-group-unbordered">
 			 		@foreach($envios as $envio)
 			 		<li class="list-group-item">

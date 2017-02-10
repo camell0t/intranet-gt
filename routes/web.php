@@ -66,6 +66,15 @@ Route::get('painel/postagens/principal/deletar/{id}', ['uses'=>'PostController@d
 Route::put('painel/postagens/principal/atualizar/{id}', ['uses'=>'PostController@atualizarprincipal', 'as'=>'postagemprincipal.atualizar']);
 
 
+//CONTRACHEQUES
+Route::get('painel/contracheques/usuarios', ['uses'=>'ContrachequeController@index', 'as'=>'contracheque.index']);
+Route::post('painel/contracheques/salva', ['uses'=>'ContrachequeController@salva', 'as'=>'contracheque.salva']);
+Route::get('painel/contracheques/lista', ['uses'=>'ContrachequeController@lista', 'as'=>'contracheque.lista']);
+Route::get('painel/contracheques/download/{id}', ['uses'=>'ContrachequeController@download', 'as'=>'contracheque.download']);
+Route::get('painel/contracheques/lista/envios/{id}', ['uses'=>'ContrachequeController@envios', 'as'=>'contracheque.envios']);
+Route::get('painel/contracheques/lista/delete/{id}', ['uses'=>'ContrachequeController@delete', 'as'=>'contracheque.delete']);
+
+
 //FORMULARIOS E ENQUETES
 Route::get('painel/forms/', ['uses'=>'FormController@index', 'as'=>'form.index']);
 Route::get('painel/forms/detalhes/{id}', ['uses'=>'FormController@detalhes', 'as'=>'form.detalhes']);

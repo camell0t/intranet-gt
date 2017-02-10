@@ -335,7 +335,7 @@ $(document).ready(function() {
 
                 <p>
                   {{$user->name}} {{$user->sobrenome}}
-                  <small>Member since Nov. 2012</small>
+                  <small>{{ $user->funcao }}</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -356,7 +356,7 @@ $(document).ready(function() {
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('perfil.index') }}" class="btn btn-default btn-flat">Meu perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ url('/logout') }}"
@@ -466,14 +466,14 @@ $(document).ready(function() {
         @endif
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
+            <i class="fa fa-money"></i> <span>Contracheque</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="{{ route('contracheque.index') }}"><i class="fa fa-circle-o"></i>Envio de contracheques</a></li>
+            <li><a href="{{ route('contracheque.lista') }}"><i class="fa fa-circle-o"></i> Meus contracheques</a></li>
           </ul>
         </li>
         <li>

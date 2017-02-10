@@ -16,6 +16,7 @@
 			 		@foreach($envios as $envio)
 			 		<li class="list-group-item">
 			 			<p><b>Nome: </b>{{ $envio->user->name }} {{ $envio->user->sobrenome }}</p> <!--CHAMA FUNCAO user NA MODEL ENVIOS_FORMULARIO -->
+			      		<p><b>Data de envio: </b>{{ $envio->created_at }}</p>
 			      		<b>Mensagem: </b><p>{{ $envio->mensagem }}</p>			      		
 			    	</li>
 			    	

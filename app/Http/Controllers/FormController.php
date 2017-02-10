@@ -27,7 +27,7 @@ class FormController extends Controller
 	public function detalhes($id){
 		$formulario = \App\Formularios::find($id);
 		
-		$envios = \App\Envios_formulario::where('formulario_id', '=', $id)->paginate(5);		
+		$envios = \App\Envios_formulario::orderBy('created_at', 'desc')->where('formulario_id', '=', $id)->paginate(5);		
 		
 		// $user_envio = DB::select('select u.name, u.sobrenome, e.mensagem from users as u right join envios_formulario as e on e.user_id = u.id');
 		

@@ -35,6 +35,17 @@
 			    </li>
 			  </ul>
 			</div>
+
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="box box-primary">
+			<div class="box-body box-profile text-center">				
+			<h3>Bem-vindo à Intranet do Grupo G Trigueiro</h3>
+				<p>Aqui o seu acesso fica restrito a rede local corporativa onde terá acesso as informações que são de uso interno da Instituição.</p><br>
+	 			<b>Objetivo</b>
+	 			<p> A Intranet tem por objetivo empregar aos seus usuários, os mesmos recursos utilizados pela Internet com a disseminação do uso de aplicações para consulta que serão continuamente implementadas. Além disso estaremos proporcionando uma comunicação clara e eficiente entre os setores com a divulgação eletrônica das informações.</p>
+			</div>			
 		</div>
 	</div>
 </div>

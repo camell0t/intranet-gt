@@ -53,6 +53,11 @@ return [
             'root' => storage_path('app/public'),
             'visibility' => 'public',
         ],
+        'contracheque' => [
+            'driver' => 'local',
+            'root' => storage_path('app/contracheques'),
+            
+        ],
 
         's3' => [
             'driver' => 's3',
