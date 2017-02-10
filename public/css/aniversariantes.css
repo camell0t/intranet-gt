@@ -1,7 +1,7 @@
 body, html {
    
  /* old browsers */
-    background: -moz-linear-gradient(top, #efefef 10%, #949494 90% ); /* firefox */
+    background: #eceff1 !important; /* firefox */
 
     } /* corresponds to height of #footer */
 .nopadding-right {
@@ -27,9 +27,9 @@ body, html {
 }
 
 .profile-header-img > img.img-circle {
-    width: 80px;
-    height: 80px;
-    border: 2px solid #FF4136;
+    width: 62px;
+    height: 62px;
+    border: 1px solid #FF4136;
 }
 
 .profile-header {
@@ -46,20 +46,20 @@ body, html {
 }
 
 .label.label-default.rank-label {
-    background-color: #e52d27;
+    background-color: #dd4b39;
     padding: 5px 10px 5px 10px;
     border-radius: 27px;
 }
 .profile-header-name{
 
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .postagem {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   min-height: 20px;
   padding: 19px;
   margin-bottom: 15px;
   background-color: #FFFFFF ;
   border: 1px solid #AAAAAA ;
-  border-radius: 5px;
   

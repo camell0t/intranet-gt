@@ -420,6 +420,17 @@ $(document).ready(function() {
             <li><a href="{{ route('perfil.editarsenha') }}"><i class="fa fa-expeditedssl"></i> Alterar senha</a></li>
           </ul>
         </li>
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i>
+            <span>Ocorrências de ponto</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('ocorrencias.index') }}"><i class="fa fa-edit"></i>Ocorrências cadastradas</a></li>            
+          </ul>
+        </li>
          @if (Auth::user()->can('Administrador'))        
         <li class="treeview">
           <a href="#">

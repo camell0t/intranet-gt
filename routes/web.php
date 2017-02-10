@@ -66,6 +66,10 @@ Route::get('painel/postagens/principal/deletar/{id}', ['uses'=>'PostController@d
 Route::put('painel/postagens/principal/atualizar/{id}', ['uses'=>'PostController@atualizarprincipal', 'as'=>'postagemprincipal.atualizar']);
 
 
+//OCORRENCIAS DE PONTO
+Route::get('painel/ocorrencias', ['uses'=>'OcorrenciasController@index', 'as'=>'ocorrencias.index']);
+
+
 //CONTRACHEQUES
 Route::get('painel/contracheques/usuarios', ['uses'=>'ContrachequeController@index', 'as'=>'contracheque.index']);
 Route::post('painel/contracheques/salva', ['uses'=>'ContrachequeController@salva', 'as'=>'contracheque.salva']);

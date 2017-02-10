@@ -301,6 +301,7 @@ class ComposerStaticInitc3a51469d35bbf19a8647b5c10e3cb44
         'CreateClientesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_11_133717_create_clientes_table.php',
         'CreateContracheque' => __DIR__ . '/../..' . '/database/migrations/2017_02_09_153928_create_contracheque.php',
         'CreateForm' => __DIR__ . '/../..' . '/database/migrations/2017_02_07_194753_create_form.php',
+        'CreateOcorrencias' => __DIR__ . '/../..' . '/database/migrations/2017_02_10_131201_create_ocorrencias.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePermisionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_155820_create_permisions_table.php',
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_16_160216_create_posts_table.php',

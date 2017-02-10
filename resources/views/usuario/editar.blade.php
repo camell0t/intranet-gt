@@ -64,11 +64,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('setor') ? ' has-error' : '' }}">
-                            <label for="setor" class="col-md-4 control-label">Setor</label>
+                       <div class="form-group{{ $errors->has('setor') ? ' has-error' : '' }}">
+                            <label for="empresa" class="col-md-4 control-label">Setor</label>
 
                             <div class="col-md-6">
-                                <input id="setor" type="text" class="form-control {{ $errors->has('setor') ? ' has-error' : '' }}" name="setor" value="{{ $usuario->setor }}" >
+                            <select name="setor" id="setor" class="form-control {{ $errors->has('empresa') ? ' has-error' : '' }}">
+                                @foreach($setores as $setor)
+                                <option value="{{$setor->id}}">{{$setor->nome}}</option>
+                                @endforeach
+                            </select>                               
                                 @if ($errors->has('setor'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('setor') }}</strong>

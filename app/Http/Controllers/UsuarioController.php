@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Role;
 use App\Role_user;
 use App\Permission;
+use App\Setor;  
 
 class UsuarioController extends Controller
 {
@@ -41,7 +42,7 @@ class UsuarioController extends Controller
     	$user->sobrenome = $request->sobrenome;
     	$user->cpf = $request->cpf;
     	$user->nascimento = $nasc;
-        $user->setor = $request->setor;
+        $user->setor_id = $request->setor;
     	$user->funcao = $request->funcao;
     	$user->empresa = $request->empresa;
     	$user->email = $request->email;
@@ -58,7 +59,8 @@ class UsuarioController extends Controller
 
     public function registro(){ // VERIFICA SE O USUARIO LOGADO TEM PERMISSAO DE ADM
         if (Auth::user()->can('Administrador') == true ){
-            return view('perfil.registro');
+            $setores = \App\Setor::all();
+            return view('perfil.registro', compact('setores'));
         }
         else{
             return redirect()->route('perfil.index');
@@ -70,7 +72,9 @@ class UsuarioController extends Controller
 
         if (Auth::user()->can('Administrador') == true ){
             $usuario = \App\User::find($id);
-            return view('usuario.editar', compact('usuario'));
+            $setores = \App\Setor::all();
+
+            return view('usuario.editar', compact('usuario', 'setores'));
         }
         else{
             return redirect()->route('perfil.index');
@@ -90,7 +94,7 @@ class UsuarioController extends Controller
             $user->sobrenome = $request->sobrenome;
             $user->cpf = $request->cpf;
             $user->nascimento = $nasc;
-            $user->setor = $request->setor;
+            $user->setor_id = $request->setor;
             $user->funcao = $request->funcao;
             $user->empresa = $request->empresa;         
             $user->save();

@@ -188,7 +188,7 @@ class PostController extends Controller
             $postp = new \App\Post_principal();
             $img = $request->file('img');
             $filename = strtolower($request->titulo)."_".time().".".$img->getClientOriginalExtension();
-            Image::make($img)->resize(770,300)->save( public_path('/uploads/postprincipal/'.$filename));
+            Image::make($img)->resize(850,300)->save( public_path('/uploads/postprincipal/'.$filename));
 
             
             $postp->img = $filename;
