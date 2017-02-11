@@ -48,10 +48,9 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
     </div>
-        <div style="padding-top: 20px;">                
-            <h2>Noticias recentes</h2>            
+        <div style="padding-top: 10px; padding-bottom: 5px;">                
+            <h2>Notícias recentes</h2>            
         </div>
-        <hr>
         @forelse($posts as $post)
             <div>
                 <div class="col-md-12 postagem">                         
@@ -79,11 +78,17 @@
 </div>
 <!-- FIM POSTAGENS--> 
 <!-- INICIO SIDEBAR-->               
-<div class="col-xs-3">                   
-    <div class="panel-group">
-        <!-- INICIO ANIVERSARIANTES -->
-        
+<div class="col-xs-3">
+        <div style="padding-bottom: 10px;">
+            <a href="#" class="btn btn-app"><i class="fa fa-edit""></i>Edit</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-envelope""></i>Edit</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-users""></i>Edit</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-inbox""></i>Edit</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-files-o""></i>Edit</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-dollar"></i>Edit</a>
+        </div>
             
+        <!-- INICIO ANIVERSARIANTES -->            
         <div class="box box-danger">
             <div class="box-body box-profile text-center">
                 <h4 style="font-size: 21px;"><i class="fa fa-birthday-cake "></i>  Aniversariantes do mês</h4>
@@ -183,8 +188,6 @@
                 </div>                                
             </div>
         @endforeach
-        <!-- FIM FORMULARIOS -->
-    </div>
 </div>
 <!-- FIM SIDEBAR-->
 
