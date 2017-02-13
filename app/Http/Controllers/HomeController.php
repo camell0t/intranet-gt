@@ -43,7 +43,8 @@ class HomeController extends Controller
         $posts = \App\Posts::orderBy('created_at', 'desc')->limit(5)->paginate(5);
         $aniversarioDia = \App\User::whereMonth('nascimento', '=', $mes)->whereDay('nascimento', '=', $dia)->get();
         $aniversarioMes = \App\User::whereMonth('nascimento', '=', $mes)->get();
-        
+        $countMes = \App\User::whereMonth('nascimento', '=', $mes)->count();
+
 
 
         //setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -53,14 +54,23 @@ class HomeController extends Controller
 
         
 
-        return view('home', compact('posts', 'aniversarioDia', 'aniversarioMes', 'postPrinc', 'enquetes', 'sugestoes'));
+        return view('home', compact('posts', 'aniversarioDia', 'aniversarioMes', 'postPrinc', 'enquetes', 'sugestoes', 'countMes'));
     }
 
     public function postagem($id){
 
+        $mes = date("m");
+        $dia = date("d");
+        $ano = date("Y");
+        $enquetes = \App\Enquete::orderBy('created_at', 'desc')->where('situacao', '=', 1)->get();
+        $sugestoes = \App\Formularios::orderBy('created_at', 'desc')->where('situacao', '=', 1)->get();        
+        $aniversarioDia = \App\User::whereMonth('nascimento', '=', $mes)->whereDay('nascimento', '=', $dia)->get();
+        $aniversarioMes = \App\User::whereMonth('nascimento', '=', $mes)->get();
+        $countMes = \App\User::whereMonth('nascimento', '=', $mes)->count();
+
         $post = \App\Posts::find($id);
         
-        return view('postagem', compact('post'));
+        return view('postagem', compact('post', 'aniversarioDia', 'aniversarioMes', 'enquetes', 'sugestoes', 'countMes'));
     }
 
     public function permissoes(){
@@ -127,10 +137,26 @@ class HomeController extends Controller
             ]);
 
             return redirect()->route('home.index');
-        }
+    }
     
+    public function colaboradores(){
+
+        $usuarios = \App\User::paginate(20);
+        $mes = date("m");
+        $dia = date("d");
+        $ano = date("Y");
+        $enquetes = \App\Enquete::orderBy('created_at', 'desc')->where('situacao', '=', 1)->get();
+        $sugestoes = \App\Formularios::orderBy('created_at', 'desc')->where('situacao', '=', 1)->get();        
+        $aniversarioDia = \App\User::whereMonth('nascimento', '=', $mes)->whereDay('nascimento', '=', $dia)->get();
+        $aniversarioMes = \App\User::whereMonth('nascimento', '=', $mes)->get();
+        $countMes = \App\User::whereMonth('nascimento', '=', $mes)->count();
+
+
+        return view('paginas.colaboradores', compact('usuarios', 'aniversarioDia', 'aniversarioMes', 'enquetes', 'sugestoes', 'countMes'));
+    }
+
 
 
 }
 
-//CRIAR PAGINA DE GERENCIAMENTO DE ENQUETES E FORMULARIOS, VALIDAR ENVIO DE FORMULARIOS, TESTE TESTE2
+

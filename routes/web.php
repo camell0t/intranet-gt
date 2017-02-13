@@ -79,6 +79,7 @@ Route::get('painel/ocorrencias/finalizadas/lista', ['uses'=>'OcorrenciasControll
 
 
 
+
 //CONTRACHEQUES
 Route::get('painel/contracheques/usuarios', ['uses'=>'ContrachequeController@index', 'as'=>'contracheque.index']); 
 Route::post('painel/contracheques/salva', ['uses'=>'ContrachequeController@salva', 'as'=>'contracheque.salva']);
@@ -104,5 +105,8 @@ Route::get('/postagem/{id}', ['uses' => 'HomeController@postagem', 'as'=>'home.p
 Route::get('/permissoes', ['uses' => 'HomeController@permissoes', 'as'=>'home.permissoes']);
 Route::post('/enquete/salvar/{id}', ['uses' => 'HomeController@salvarenquete', 'as'=>'enquete.salvar']);
 Route::post('/formulario/salvar/{id}', ['uses' => 'HomeController@salvarformulario', 'as'=>'formulario.salvar']);
+
+//PAGINAS INICIAIS
+Route::get('/colaboradores', ['uses'=>'HomeController@colaboradores', 'as'=>'colaboradores.index']);
 
 

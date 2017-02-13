@@ -77,7 +77,7 @@
         
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#"><b>INÍCIO</b></a>
+                <a class="nav-link" href="{{ route('home.index') }}"><b>INÍCIO</b></a>
             </li>
              <li class="nav-item">
                 <a class="nav-link" href="#"><b>EMPRESA</b></a>
