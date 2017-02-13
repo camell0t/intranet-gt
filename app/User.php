@@ -52,4 +52,10 @@ class User extends Authenticatable
         //manager
         return $this->roles->contains('name', $roles);
     }
+
+    public function setor(){
+        return $this->belongsTo(\App\Setor::class); // RECUPERA USUARIO
+    }
+   
+    
 }

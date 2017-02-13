@@ -11,4 +11,5 @@ class Setor extends Model
    	public function user(){
     	return $this->belongsTo(\App\User::class); // RECUPERA USUARIO
     }
+    
 }

@@ -18,12 +18,138 @@ class OcorrenciasController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
+    public function index(){ // lista ocorrencias do usuario logado
     	$id = Auth::user()->id;
     	$user = Auth::user();
-    	$ocorrencias = \App\Ocorrencias::where('user_id', '=', $id)->paginate(10);
+    	$ocorrencias = \App\Ocorrencias::where([
+    					['user_id', '=', $id],
+    					['situacao', '=', 'Pendente'],
+    					])->paginate(10);
     	
     	return view('ocorrencias.index', compact('ocorrencias', 'user'));
+    }
+
+    public function registro(){ // redireciona para a pagina de registro
+    	$usuario = Auth::user();
+
+    	return view('ocorrencias.registro', compact('usuario'));
+    }
+
+    public function salvar(\App\Http\Requests\OcorrenciaRequest $request){ // salva uma ocorrencia registrada pelo usuario logado
+    	$usuario = Auth::user();
+    	$user_id = $usuario->id;
+
+    	$data = implode("-",array_reverse(explode("/",$request->data)));
+    	
+    	$ocorrencia = new  \App\Ocorrencias;
+    	$ocorrencia->setor_id = $request->setor;
+    	$ocorrencia->user_id = $user_id;
+    	$ocorrencia->data = $data;
+    	$ocorrencia->horario = $request->horario;
+    	$ocorrencia->periodo = $request->periodo;
+    	$ocorrencia->justificativa = $request->justificativa;
+    	$ocorrencia->complemento = $request->complemento;
+    	$ocorrencia->situacao = "Pendente";
+    	$ocorrencia->save();
+
+    	\Session::flash('flash_message', [
+    			'msg'=>"Ocorrência registrada com Sucesso!",
+    			'class'=>"alert-success"
+    		]);
+
+		return redirect()->route('ocorrencias.index');
+    
+    }
+
+    public function delete($id){ // deleta uma ocorrencia registrada pelo usuario logado
+    	$usuario = Auth::user();
+    	$user_id = $usuario->id;
+
+    	$ocorrencia = \App\Ocorrencias::find($id);
+    	
+    	if ($ocorrencia->user_id == $user_id) {
+    		$ocorrencia->delete();
+
+    		\Session::flash('flash_message', [
+    			'msg'=>"Ocorrência deletada com Sucesso!",
+    			'class'=>"alert-success"
+    		]);
+
+		return redirect()->route('ocorrencias.index');
+    	}else{
+
+    	}
+
+    }
+
+    public function lista(){ // lista de ocorrencias de funcionarios pendentes
+
+    	$id = Auth::user()->id;
+
+    	$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
+    	$setor = $setores[0];    	
+    	
+
+    	$ocorrencias = \App\Ocorrencias::where([
+    					['setor_id', '=', $setor->id],
+    					['situacao', '=', 'Pendente'],
+    					])->paginate(15);
+
+    	return view('ocorrencias.lista', compact('ocorrencias'));
+    	
+    }
+
+    public function finalizar(Request $request, $id){ // finaliza uma ocorrencia de funcionario
+
+    	
+    	
+		$user_id = Auth::user()->id;
+
+    	$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $user_id)->get();
+    	$setor = $setores[0];
+    	if ($user_id == $setor->supervisor_id) {
+
+			$ocorrencia = \App\Ocorrencias::find($id);
+    		$ocorrencia->situacao = $request->situacao;
+    		$ocorrencia->obs = $request->obs;
+    		$ocorrencia->save();
+
+    		\Session::flash('flash_message', [
+    			'msg'=>"Ocorrência finalizada com Sucesso!!",
+    			'class'=>"alert-success"
+    		]);
+
+		return redirect()->route('ocorrencias.lista');
+    	
+    	}
+
+    }
+    public function finalizadas(){ // lista de ocorrencias de funcionarios pendentes
+
+    	$id = Auth::user()->id;
+
+    	$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
+    	$setor = $setores[0];    	
+    	
+
+    	$ocorrencias = \App\Ocorrencias::orderBy('created_at', 'desc')->where([
+    					['setor_id', '=', $setor->id],
+    					['situacao', '<>', 'Pendente'],
+    					])->paginate(15);
+
+    	return view('ocorrencias.finalizadas', compact('ocorrencias'));
+    	
+    }
+
+    public function finalizadas_usuario(){
+    	$id = Auth::user()->id;
+
+    	$ocorrencias = \App\Ocorrencias::orderBy('created_at', 'desc')->where([
+    					['user_id', '=', $id],
+    					['situacao', '<>', 'Pendente'],
+    					])->paginate(15);
+    	return view('ocorrencias.finalizadas_usuario', compact('ocorrencias'));
+
     }
 
 

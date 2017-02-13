@@ -80,12 +80,12 @@
 <!-- INICIO SIDEBAR-->               
 <div class="col-xs-3">
         <div style="padding-bottom: 10px;">
-            <a href="#" class="btn btn-app"><i class="fa fa-edit""></i>Edit</a>
-            <a href="#" class="btn btn-app"><i class="fa fa-envelope""></i>Edit</a>
-            <a href="#" class="btn btn-app"><i class="fa fa-users""></i>Edit</a>
-            <a href="#" class="btn btn-app"><i class="fa fa-inbox""></i>Edit</a>
-            <a href="#" class="btn btn-app"><i class="fa fa-files-o""></i>Edit</a>
-            <a href="#" class="btn btn-app"><i class="fa fa-dollar"></i>Edit</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-user""></i>Meu perfil</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-users""></i>Colaboradores</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-file-text-o""></i>Documentos</a>            
+            <a href="#" class="btn btn-app"><i class="fa fa-calendar-check-o""></i>Calendário</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-files-o""></i>Manuais</a>
+            <a href="#" class="btn btn-app"><i class="fa fa-pencil-square-o"></i>Solicitações</a>
         </div>
             
         <!-- INICIO ANIVERSARIANTES -->            

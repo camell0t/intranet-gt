@@ -14,7 +14,7 @@
 
 			  <ul class="list-group list-group-unbordered">
 			    <li class="list-group-item">
-			      <b>Setor: </b> <a class="pull-right">{{ $user->setor }}</a>
+			      <b>Setor: </b> <a class="pull-right"></a>
 			    </li>
 			    <li class="list-group-item">
 			      <b>E-mail: </b> <a class="pull-right">{{ $user->email }}</a>

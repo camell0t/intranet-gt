@@ -422,13 +422,14 @@ $(document).ready(function() {
         </li>
          <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-calendar-o"></i>
             <span>Ocorrências de ponto</span>
             <span class="pull-right-container">
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('ocorrencias.index') }}"><i class="fa fa-edit"></i>Ocorrências cadastradas</a></li>            
+            <li><a href="{{ route('ocorrencias.index') }}"><i class="fa fa-edit"></i>Minhas ocorrências de ponto</a></li>
+            <li><a href="{{ route('ocorrencias.lista') }}"><i class="fa fa-edit"></i>Ocorrências pendentes</a></li>          
           </ul>
         </li>
          @if (Auth::user()->can('Administrador'))        

@@ -67,11 +67,20 @@ Route::put('painel/postagens/principal/atualizar/{id}', ['uses'=>'PostController
 
 
 //OCORRENCIAS DE PONTO
-Route::get('painel/ocorrencias', ['uses'=>'OcorrenciasController@index', 'as'=>'ocorrencias.index']);
+Route::get('painel/ocorrencias', ['uses'=>'OcorrenciasController@index', 'as'=>'ocorrencias.index']); //PAG INICIAL OCORRENCIAS USUARIOS
+Route::get('painel/ocorrencias/registro', ['uses'=>'OcorrenciasController@registro', 'as'=>'ocorrencias.registro']); // REGISTRO DE OCORRENCIA USUARIO
+Route::post('painel/ocorrencias/salvar', ['uses'=>'OcorrenciasController@salvar', 'as'=>'ocorrencias.salvar']); // SALVA OCORRENCIA DE USUARIO
+Route::get('painel/ocorrencias/deletar/{id}', ['uses'=>'OcorrenciasController@delete', 'as'=>'ocorrencias.delete']); // DELETA OCORRENCIA DE USUARIO
+Route::get('painel/ocorrencias/finalizadas_usuario/lista', ['uses'=>'OcorrenciasController@finalizadas_usuario', 'as'=>'ocorrencias.finalizadas_usuario']); //FIN.USUARIO
+Route::get('painel/ocorrencias/lista', ['uses'=>'OcorrenciasController@lista', 'as'=>'ocorrencias.lista']); // LISTA OCORRENCIAS PENDENTES - SUPERVISOR
+Route::get('painel/postagens/finalizar/{id}', ['uses'=>'OcorrenciasController@finalizar', 'as'=>'ocorrencias.finalizar']); // OCORRENCIA PENDENTE - SUPERVISOR
+Route::get('painel/ocorrencias/finalizadas/lista', ['uses'=>'OcorrenciasController@finalizadas', 'as'=>'ocorrencias.finalizadas']); // OCORRENCIAS FINALIZADAS - SUPERVISOR
+
+
 
 
 //CONTRACHEQUES
-Route::get('painel/contracheques/usuarios', ['uses'=>'ContrachequeController@index', 'as'=>'contracheque.index']);
+Route::get('painel/contracheques/usuarios', ['uses'=>'ContrachequeController@index', 'as'=>'contracheque.index']); 
 Route::post('painel/contracheques/salva', ['uses'=>'ContrachequeController@salva', 'as'=>'contracheque.salva']);
 Route::get('painel/contracheques/lista', ['uses'=>'ContrachequeController@lista', 'as'=>'contracheque.lista']);
 Route::get('painel/contracheques/download/{id}', ['uses'=>'ContrachequeController@download', 'as'=>'contracheque.download']);
