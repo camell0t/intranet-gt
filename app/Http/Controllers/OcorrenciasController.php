@@ -87,7 +87,7 @@ class OcorrenciasController extends Controller
     	$id = Auth::user()->id;
 
     	$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
-    	$setor = $setores[0];    	
+    	$setor = $setores[0];
     	
 
     	$ocorrencias = \App\Ocorrencias::where([

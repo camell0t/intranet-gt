@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-
+                         <!-- REGISTRO DE SENHA
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Endereço de e-mail</label>
 
@@ -138,6 +138,7 @@
                             </div>
                         </div>
 
+                       
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Senha</label>
 
@@ -151,7 +152,7 @@
                                 @endif
                             </div>
                         </div>
-
+            
 
                         <div class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label ">Confirme sua senha</label>
@@ -164,7 +165,7 @@
                             @endif
                             </div>
                         </div>
-
+                                    FIM REGISTRO DE SENHA -->
                         <div class="form-group" >
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">

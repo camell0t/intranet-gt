@@ -13,10 +13,23 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../css/AdminLTE.css">
+   <script src="../js/jquery.js"></script> 
   <!-- iCheck -->
   <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
-<script src="../js/jquery.js"></script> 
+
+  <script>
+$(document).ready(function() {
+    $("#date").keyup(function(){
+        if ($(this).val().length == 2){
+            $(this).val($(this).val() + "/");
+        }else if ($(this).val().length == 5){
+            $(this).val($(this).val() + "/");
+        }
+    });
+});
+</script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -43,45 +56,41 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Faça o login</p>
+    <p class="login-box-msg">Confirme seus dados para proseguir com o cadastro</p>
 
-    <form action="{{ url('/login') }}" method="post">
+    <form action="{{ route('registro.verifica') }}" method="get">
     {{ csrf_field() }}
-    <label class="label-control col-md-2">Login: </label>
-        <div class="col-md-10">
-          <div class="form-group has-feedback {{ $errors->has('login') ? ' has-error' : '' }}">
-            <input type="text" class="form-control" placeholder="Insira o nome de usuário" name="login">
-            @if ($errors->has('login'))
+    <label class="label-control">CPF: </label>
+       
+          <div class="form-group has-feedback {{ $errors->has('cpf') ? ' has-error' : '' }}">
+            <input type="text" class="form-control" placeholder="Insira seu CPF" name="cpf">
+            <small>Exemplo: 27487463176</small>
+            @if ($errors->has('cpf'))
               <span class="help-block">
-                  <strong>{{ $errors->first('login') }}</strong>
+                  <strong>{{ $errors->first('cpf') }}</strong>
               </span>
             @endif
             <span class="glyphicon glyphicon glyphicon-user form-control-feedback"></span>
           </div>
-      </div>
-    <label class="label-control col-md-2">Senha: </label>
-      <div class="col-md-10">
-          <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
-            <input type="password" class="form-control" placeholder="Senha" name="password">
-            @if ($errors->has('password'))
+      
+    <label class="label-control">Nascimento: </label>
+      
+          <div class="form-group has-feedback {{ $errors->has('nascimento') ? ' has-error' : '' }}">
+            <input type="text" id="date" class="form-control" placeholder="Data de nascimento" name="nascimento">
+            <small>Exemplo: 01/01/1989</small>
+            @if ($errors->has('nascimento'))
               <span class="help-block">
-                  <strong>{{ $errors->first('password') }}</strong>
+                  <strong>{{ $errors->first('nascimento') }}</strong>
               </span>
            @endif
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <span class="glyphicon glyphicon glyphicon-calendar form-control-feedback"></span>
           </div>
-      </div>
+      
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox" name="remember"> Lembrar
-            </label>
-          </div>
-        </div>
+       
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+        <div class="col-xs-6 col-xs-offset-3">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Continuar</button>
         </div>
         <!-- /.col -->
       </div>
@@ -90,20 +99,17 @@
     
     <!-- /.social-auth-links -->
 
-    <a href="{{ url('/password/reset') }}">Esqueceu a senha?</a><br>
-    <a href="{{ route('registro.index') }}" class="text-center">Novo? Registre-se</a>
-
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../js/bootstrap.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="../plugins/iCheck/icheck.min.js"></script>
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({

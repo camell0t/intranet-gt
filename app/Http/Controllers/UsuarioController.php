@@ -44,9 +44,7 @@ class UsuarioController extends Controller
     	$user->nascimento = $nasc;
         $user->setor_id = $request->setor;
     	$user->funcao = $request->funcao;
-    	$user->empresa = $request->empresa;
-    	$user->email = $request->email;
-    	$user->password = bcrypt($request->password);
+    	$user->empresa = $request->empresa;    	
 		$user->save();
 
 		\Session::flash('flash_message', [
@@ -248,4 +246,5 @@ class UsuarioController extends Controller
         }
 
     }
+
 }

@@ -138,8 +138,15 @@ trait AuthenticatesUsers
      */
     public function username()
     {
+        return 'login';
+    }
+
+    /*
+     public function username()
+    {
         return 'email';
     }
+    */
 
     /**
      * Log the user out of the application.
