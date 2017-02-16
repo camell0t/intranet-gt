@@ -1,6 +1,6 @@
 <div class="col-xs-3">
         <div style="padding-bottom: 10px;">
-            <a href="{{ route('perfil.index') }}" class="btn btn-app"><i class="fa fa-user""></i>Meu perfil</a>
+            <a href="{{ route('perfil.index') }}" class="btn btn-app"><i class="fa fa-tachometer""></i>Dashboard</a>
             <a href="{{ route('colaboradores.index') }}" class="btn btn-app"><i class="fa fa-users""></i>Colaboradores</a>
             <a href="#" class="btn btn-app"><i class="fa fa-file-text-o""></i>Documentos</a>            
             <a href="#" class="btn btn-app"><i class="fa fa-calendar-check-o""></i>Calendário</a>

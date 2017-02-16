@@ -73,7 +73,7 @@
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       
-      <div class="navbar-custom-menu">
+      <div class="navbar-custom-menu navbar-left">
         
         <ul class="nav navbar-nav">
             <li class="nav-item">
@@ -95,12 +95,14 @@
                 <a class="nav-link" href="#"><b>OUVIDORIA</b></a>
             </li>  
         </ul>
-        <ul class="nav navbar-nav" style="padding-left:200px;">        
+        </div>
+        <div class="navbar-custom-menu navbar-right" style="margin-right: 5px;">
+        <ul class="nav navbar-nav">        
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/uploads/perfil/{{ $user->avatar }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{$user->name}} {{$user->sobrenome}}</span>
+              <span class="hidden-xs">{{$user->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -111,21 +113,6 @@
                   {{$user->name}} {{$user->sobrenome}}
                   <small>{{ $user->funcao }}</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">

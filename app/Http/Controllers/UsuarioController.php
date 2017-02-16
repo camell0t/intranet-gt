@@ -23,7 +23,7 @@ class UsuarioController extends Controller
 
     public function index(){
 
-     if (Auth::user()->can('Administrador') == true ){
+     if (Auth::user()->can('edita_usuarios') == true ){
             $usuarios = \App\User::paginate(5); // all listaria todos os dados, paginate da opcao de usar o metodo links para paginacao na view
             return view('usuario.index', compact('usuarios'));
         }
@@ -68,7 +68,7 @@ class UsuarioController extends Controller
 
     public function editar($id){
 
-        if (Auth::user()->can('Administrador') == true ){
+        if (Auth::user()->can('edita_usuarios') == true ){
             $usuario = \App\User::find($id);
             $setores = \App\Setor::all();
 
@@ -83,7 +83,7 @@ class UsuarioController extends Controller
 
      public function atualizar(\App\Http\Requests\UsuarioAtualizaRequest $request,$id){
 		
-        if (Auth::user()->can('Administrador') == true ){
+        if (Auth::user()->can('edita_usuarios') == true ){
             $user = \App\User::find($id);
             $nasc = implode("-",array_reverse(explode("/",$request->nascimento)));
 
@@ -114,7 +114,7 @@ class UsuarioController extends Controller
 
     public function editarsenha($id){
 
-        if (Auth::user()->can('Administrador') == true ){
+        if (Auth::user()->can('edita_usuarios') == true ){
             $usuario = \App\User::find($id);
             return view('usuario.editarsenha', compact('usuario'));
         }
@@ -126,7 +126,7 @@ class UsuarioController extends Controller
     }
 
     public function atualizarsenha(\App\Http\Requests\UsuarioAtualizarSenhaRequest $request,$id){
-          if (Auth::user()->can('Administrador') == true ){
+          if (Auth::user()->can('edita_usuarios') == true ){
             $user = \App\User::find($id);       
             $user->password = bcrypt($request->password);
             $user->save();
@@ -172,7 +172,7 @@ class UsuarioController extends Controller
 
     public function editaracesso($id){
 
-        if (Auth::user()->can('Administrador') == true ){
+        if (Auth::user()->can('edita_usuarios') == true ){
             //recupera o usuario
             $usuario = \App\User::find($id);
             $roles =  $usuario->roles()->get(); // recebe a funcao roles da model Roles
@@ -193,7 +193,7 @@ class UsuarioController extends Controller
 
     public function atualizaacesso(Request $request, $id){
 
-        if (Auth::user()->can('Administrador') == true ){
+        if (Auth::user()->can('edita_usuarios') == true ){
             $usuario = \App\User::find($id);
             $acesso = new \App\Role_user;
             $roleid = $request->input('role_id');
@@ -229,7 +229,7 @@ class UsuarioController extends Controller
 
     public function deletaracesso($id, $roleid){
 
-        if (Auth::user()->can('Administrador') == true ){
+        if (Auth::user()->can('edita_usuarios') == true ){
          $dados = \App\Role_user::where([
                 ['user_id', '=', $id],
                 ['role_id', '=', $roleid]
@@ -244,6 +244,15 @@ class UsuarioController extends Controller
         }else{
             return redirect()->route('perfil.index');
         }
+
+    }
+
+    public function setores(){
+        $setores = \App\Setor::all();
+        $usuarios = \App\User::all();
+
+        return view('usuario.setores', compact('setores', 'usuarios'));
+
 
     }
 

@@ -83,19 +83,27 @@ class OcorrenciasController extends Controller
     }
 
     public function lista(){ // lista de ocorrencias de funcionarios pendentes
+        if (Auth::user()->can('finaliza_ocorrencias') == true ){
 
-    	$id = Auth::user()->id;
+            $id = Auth::user()->id;
 
-    	$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
-    	$setor = $setores[0];
+            $setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
+            $setor = $setores[0];
+            
+
+            $ocorrencias = \App\Ocorrencias::where([
+                            ['setor_id', '=', $setor->id],
+                            ['situacao', '=', 'Pendente'],
+                            ])->paginate(15);
+
+            return view('ocorrencias.lista', compact('ocorrencias'));
+            
+
+        }else{
+
+            return redirect()->route('perfil.index');          
+        }
     	
-
-    	$ocorrencias = \App\Ocorrencias::where([
-    					['setor_id', '=', $setor->id],
-    					['situacao', '=', 'Pendente'],
-    					])->paginate(15);
-
-    	return view('ocorrencias.lista', compact('ocorrencias'));
     	
     }
 
@@ -125,7 +133,7 @@ class OcorrenciasController extends Controller
 
     }
     public function finalizadas(){ // lista de ocorrencias de funcionarios pendentes
-
+        if (Auth::user()->can('finaliza_ocorrencias') == true ){
     	$id = Auth::user()->id;
 
     	$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
@@ -139,6 +147,9 @@ class OcorrenciasController extends Controller
 
     	return view('ocorrencias.finalizadas', compact('ocorrencias'));
     	
+        }else{
+             return redirect()->route('perfil.index');
+        }
     }
 
     public function finalizadas_usuario(){
@@ -152,6 +163,56 @@ class OcorrenciasController extends Controller
 
     }
 
+    public function relatorios(){
+        if (Auth::user()->can('relatorio_ocorrencias') == true ){
+        $usuarios = \App\User::all();
+
+        return view('ocorrencias.relatorios', compact('usuarios'));
+        }else{
+            return redirect()->route('ocorrencias.lista');
+        }
+    }
+    public function relatorio_finalizadas(Request $request){
+        
+        $dataini = $request->data_inicio;
+        $datafim = $request->data_fim;
+        $data_inicio = implode("-",array_reverse(explode("/",$request->data_inicio)));
+        $data_fim = implode("-",array_reverse(explode("/",$request->data_fim)));
+        
+        $ocorrencias = \App\Ocorrencias::where([
+                                        ['user_id', '=', $request->usuario],
+                                        ['situacao', '<>', "Pendente"],
+                                        ])->whereBetween('data', array($data_inicio, $data_fim))->get();
+        
+        $nome = $ocorrencias['0']->user->name;
+        $sobrenome = $ocorrencias['0']->user->sobrenome;
+
+        $empresa = $ocorrencias['0']->user->empresa;
+        if ($empresa == "G TRIGUEIRO TECNOLOGIA LTDA") {
+
+            $cnpj = "14.273.573/0001-01";
+        
+        }elseif ($empresa == "G TRIGUEIRO BRASIL SERVIÇOS TECNOLÓGICOS LTDA") {
+            
+            $cnpj = "08.336.975/0001-05";
+
+        }elseif ($empresa == "MAQUINAS E EQUIPAMENTOS COMERCIAL LTDA") {
+
+            $cnpj = "00.702.550/0001-52";
+
+        }elseif ($empresa == "MAQUIP LOCAÇÃO E SERVIÇOS EIRELI - EPP") {
+            $cnpj = "24.202.806/0001-20";
+        }else{
+
+        }
+
+        
+
+        return view('ocorrencias.relatorio_finalizadas', compact('ocorrencias', 'dataini', 'datafim', 'nome', 'sobrenome', 'cnpj'));
+
+
+        
+    }
 
 
 }

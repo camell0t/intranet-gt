@@ -31,6 +31,7 @@ Route::post('/painel/perfil/avatar/atualizar', ['uses'=>'PerfilController@atuali
 
 
 
+
 //PAINEL
 Route::get('painel/registro', ['uses'=>'UsuarioController@registro', 'as'=>'perfil.registro']);
 Route::post('painel/registro/salvar', ['uses'=>'UsuarioController@salvar', 'as'=>'perfil.registro.salvar']);
@@ -46,6 +47,9 @@ Route::get('painel/usuario/editar/acesso/{id}', ['uses'=>'UsuarioController@edit
 Route::put('painel/usuario/atualizar/acesso/{id}', ['uses'=>'UsuarioController@atualizaacesso', 'as'=>'usuario.atualizaacesso']);
 Route::get('painel/usuario/atualizar/deletar/{id}/{role_id}', ['uses'=>'UsuarioController@deletaracesso', 'as'=>'usuario.deletaracesso']);
 Route::get('painel/usuarios/', ['uses'=>'UsuarioController@index', 'as'=>'usuario.index']);
+Route::get('painel/usuarios/setores', ['uses'=>'UsuarioController@setores', 'as'=>'usuario.setores']);
+
+
 
 
 //POSTAGENS
@@ -74,6 +78,8 @@ Route::get('painel/ocorrencias/finalizadas_usuario/lista', ['uses'=>'Ocorrencias
 Route::get('painel/ocorrencias/lista', ['uses'=>'OcorrenciasController@lista', 'as'=>'ocorrencias.lista']); // LISTA OCORRENCIAS PENDENTES - SUPERVISOR
 Route::get('painel/postagens/finalizar/{id}', ['uses'=>'OcorrenciasController@finalizar', 'as'=>'ocorrencias.finalizar']); // OCORRENCIA PENDENTE - SUPERVISOR
 Route::get('painel/ocorrencias/finalizadas/lista', ['uses'=>'OcorrenciasController@finalizadas', 'as'=>'ocorrencias.finalizadas']); // OCORRENCIAS FINALIZADAS - SUPERVISOR
+Route::get('painel/ocorrencias/relatorios', ['uses'=>'OcorrenciasController@relatorios', 'as'=>'ocorrencias.relatorios']);
+Route::post('painel/ocorrencias/relatorios/finalizadas', ['uses'=>'OcorrenciasController@relatorio_finalizadas', 'as'=>'ocorrencias.relatorio_finalizadas']);
 
 
 

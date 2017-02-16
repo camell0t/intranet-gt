@@ -21,9 +21,30 @@ class PerfilController extends Controller
 
 
 	public function index(){
+
 		$id = (Auth::user()->id);
 		$user = \App\User::find($id);
-    	return view('perfil.index', compact('user'));
+		$countSetores = \App\Setor::where('supervisor_id', '=', $id)->count();
+
+		
+		if ($countSetores > 0) {
+			
+			$setores = \App\Setor::orderBy('created_at', 'desc')->where('supervisor_id', '=', $id)->get();
+			$setor = $setores[0];
+			$count = \App\Ocorrencias::where([
+    							['setor_id', '=', $setor->id],
+    							['situacao', '=', "Pendente"]
+    							])->count();
+			
+    		return view('perfil.index', compact('user', 'count'));
+		}else{
+
+			return view('perfil.index', compact('user'));
+		}
+    	
+    	    	
+    	
+    	
 	}
 
 	public function editaremail(){
@@ -104,6 +125,7 @@ class PerfilController extends Controller
     	
 
     }
+    
 
 
 }

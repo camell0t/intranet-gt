@@ -21,9 +21,14 @@ class ContrachequeController extends Controller
 
 
     public function index(){
+    	if (Auth::user()->can('envia_contracheque') == true ){
+
     	$usuarios = User::paginate(5);
     	return view('contracheque.usuarios', compact('usuarios'));
-    }
+    	}else{
+    		return redirect()->route('perfil.index');
+    	}
+	}
      public function salva(Request $request) {
         if($request->hasFile('contracheque')) {
             if ($request->file('contracheque')->isValid()) {
